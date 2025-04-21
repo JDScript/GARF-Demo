@@ -32,3 +32,13 @@ jobs:
         cache: 'pnpm'
     - run: pnpm install
     - run: pnpm build
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3.0.1
+      with:
+        path: dist/
+
+  deploy:
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    needs: build
