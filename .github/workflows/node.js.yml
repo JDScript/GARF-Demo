@@ -35,13 +35,12 @@ jobs:
       with:
         path: dist/
     - name: Publish to Cloudflare
-      uses: cloudflare/pages-action@v1.5.0
+      uses: cloudflare/wrangler-action@v3
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        projectName: garf-demo
-        directory: dist
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        command: pages deploy dist --project-name=example
 
   deploy:
     permissions:
