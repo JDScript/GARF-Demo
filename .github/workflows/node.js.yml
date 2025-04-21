@@ -34,6 +34,14 @@ jobs:
       uses: actions/upload-pages-artifact@v3.0.1
       with:
         path: dist/
+    - name: Publish to Cloudflare
+      uses: cloudflare/pages-action@v1.5.0
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: garf-demo
+        directory: dist
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     permissions:
