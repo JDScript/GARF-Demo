@@ -36,6 +36,9 @@ jobs:
         path: dist/
 
   deploy:
+    permissions:
+      id-token: write
+      pages: write
     runs-on: ubuntu-latest
     needs: build
     steps:
